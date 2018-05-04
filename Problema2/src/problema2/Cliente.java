@@ -58,6 +58,11 @@ public abstract class Cliente {
     public void setTelFixo(String telFixo) {
         this.telFixo = telFixo;
     }
+
+    @Override
+    public String toString() {
+        return this.nome;
+    }
     
     
     

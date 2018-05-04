@@ -11,4 +11,9 @@ package problema2;
  */
 public class BaixaAutomaticaInvestimento {
     
+    public String toString(ContaCorrente cc){
+        
+        return "Cliente " +cc.getCliente() + ", Conta" +cc.getChave()+" - Baixa automática de investimento";
+    }
+    
 }

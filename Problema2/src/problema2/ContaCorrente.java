@@ -92,4 +92,8 @@ public class ContaCorrente {
     public String toString(){
         return this.getChave();
     }
+    
+    public List<Operacao> getOperacoes() {
+        return operacoes;
+    }
 }

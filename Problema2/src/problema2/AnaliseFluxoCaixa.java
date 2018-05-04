@@ -5,10 +5,19 @@
  */
 package problema2;
 
+import java.util.List;
+
 /**
  *
  * @author bruno
  */
 public class AnaliseFluxoCaixa {
     
+    
+    
+    public String toString(ContaCorrente cc){
+        List<Operacao> operacoes = cc.getOperacoes();
+        Operacao operacao = operacoes.get(operacoes.size() - 1);
+        return "Cliente " +cc.getCliente() + ", Conta" +cc.getChave()+", " +operacao.getTipo()+ " de R$ " +operacao.getValor()+ " - Serviço de Análise de Fluxo de Caixa";
+    }
 }

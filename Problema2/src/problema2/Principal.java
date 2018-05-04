@@ -73,6 +73,8 @@ public class Principal extends javax.swing.JFrame {
         txtQtdSaque = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         cbConta2 = new javax.swing.JComboBox<>();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -206,7 +208,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(43, 43, 43)
                 .addComponent(btCadastrarCliente)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cliente", jPanel1);
@@ -271,7 +273,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(cbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(btCadastrarConta)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Conta", jPanel2);
@@ -327,6 +329,16 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox4.setText("Baixa automática de investimento");
+        jCheckBox4.setToolTipText("");
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox4ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox5.setText("Análise de Fluxo de Caixa");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -365,13 +377,19 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(150, 150, 150)
                         .addComponent(btTransferir))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jCheckBox1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox3)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jCheckBox4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox5))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jCheckBox1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox3)))))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,12 +420,15 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(cbConta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btTransferir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox1)
                     .addComponent(jCheckBox2)
                     .addComponent(jCheckBox3))
-                .addGap(26, 26, 26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox4)
+                    .addComponent(jCheckBox5)))
         );
 
         jTabbedPane1.addTab("Operação", jPanel3);
@@ -423,7 +444,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -448,11 +469,13 @@ public class Principal extends javax.swing.JFrame {
     private void btDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDepositarActionPerformed
         contaAtual.depositar(Double.parseDouble(txtQtdDepositar.getText()));
         limparCampos();
+        notifica();
     }//GEN-LAST:event_btDepositarActionPerformed
 
     private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
         contaAtual.sacar(Double.parseDouble(txtQtdSaque.getText()));
         limparCampos();
+        notifica();
     }//GEN-LAST:event_btSacarActionPerformed
 
     private void btCadastrarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarContaActionPerformed
@@ -504,9 +527,14 @@ public class Principal extends javax.swing.JFrame {
         }else{
             cli = new  ClientePessoaJuridica(txtNome.getText(), txtCelular.getText(), txtTelefone.getText(), txtCnpj.getText(), txtJms.getText());
         }
+        JOptionPane.showMessageDialog(this,"Cliente Cadastrado");
         cbCliente.addItem(cli);
         limparCampos();
     }//GEN-LAST:event_btCadastrarClienteActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
 
     
     /**
@@ -557,6 +585,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -603,5 +633,28 @@ public class Principal extends javax.swing.JFrame {
         txtQtdSaque.setText("");
         txtTelefone.setText("");
         
+    }
+    
+    private void notifica(){
+         Notificacao n = new Notificacao();
+        if (jCheckBox1.isSelected()) {
+            n.setWhatsApp(true); 
+        }
+        if (jCheckBox2.isSelected()) {
+            n.setSMS(true);
+        }
+        if (jCheckBox3.isSelected()) {
+            n.setJMS(true);
+        }
+        n.defineNotificacao();
+        JOptionPane.showMessageDialog(this, n.toString(contaAtual));
+        if (jCheckBox4.isSelected()) {
+            BaixaAutomaticaInvestimento b = new BaixaAutomaticaInvestimento();
+            JOptionPane.showMessageDialog(this, b.toString(contaAtual));
+        }
+        if (jCheckBox5.isSelected()) {
+            AnaliseFluxoCaixa a = new AnaliseFluxoCaixa();
+            JOptionPane.showMessageDialog(this, a.toString(contaAtual));
+        }
     }
 }
