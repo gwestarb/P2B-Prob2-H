@@ -55,6 +55,11 @@ public class Principal extends javax.swing.JFrame {
         txtAgencia = new javax.swing.JTextField();
         txtNumero = new javax.swing.JTextField();
         btCadastrarConta = new javax.swing.JButton();
+        ckBaixaAutomaticaInvestimento = new javax.swing.JCheckBox();
+        ckAnaliseFluxoCaixa = new javax.swing.JCheckBox();
+        ckWhatsapp = new javax.swing.JCheckBox();
+        ckSms = new javax.swing.JCheckBox();
+        ckJms = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         btSacar = new javax.swing.JButton();
@@ -65,16 +70,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         txtQtdTransferir = new javax.swing.JTextField();
         btTransferir = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
         jLabel21 = new javax.swing.JLabel();
         cbConta = new javax.swing.JComboBox<>();
         txtQtdSaque = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         cbConta2 = new javax.swing.JComboBox<>();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -213,17 +213,25 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Cliente", jPanel1);
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel5.setText("Número");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 33, -1, -1));
 
         jLabel6.setText("Agencia");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 74, -1, -1));
 
         jLabel7.setText("Cliente");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 105, -1, -1));
 
         cbCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbClienteActionPerformed(evt);
             }
         });
+        jPanel2.add(cbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 102, 142, -1));
+        jPanel2.add(txtAgencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 71, 142, -1));
+        jPanel2.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 30, 142, -1));
 
         btCadastrarConta.setText("Cadastrar");
         btCadastrarConta.addActionListener(new java.awt.event.ActionListener() {
@@ -231,50 +239,28 @@ public class Principal extends javax.swing.JFrame {
                 btCadastrarContaActionPerformed(evt);
             }
         });
+        jPanel2.add(btCadastrarConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 159, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(19, 19, 19)
-                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(btCadastrarConta)))
-                .addContainerGap(223, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(cbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(btCadastrarConta)
-                .addContainerGap(138, Short.MAX_VALUE))
-        );
+        ckBaixaAutomaticaInvestimento.setText("Baixa automática de investimento");
+        ckBaixaAutomaticaInvestimento.setToolTipText("");
+        ckBaixaAutomaticaInvestimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckBaixaAutomaticaInvestimentoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ckBaixaAutomaticaInvestimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, -1));
+
+        ckAnaliseFluxoCaixa.setText("Análise de Fluxo de Caixa");
+        jPanel2.add(ckAnaliseFluxoCaixa, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
+
+        ckWhatsapp.setText("Enviar p Whatsapp");
+        jPanel2.add(ckWhatsapp, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 120, -1));
+
+        ckSms.setText("Enviar via SMS");
+        jPanel2.add(ckSms, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 100, -1));
+
+        ckJms.setText("Enviar via JMS");
+        jPanel2.add(ckJms, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 100, -1));
 
         jTabbedPane1.addTab("Conta", jPanel2);
 
@@ -307,12 +293,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setText("Enviar p Whatsapp");
-
-        jCheckBox2.setText("Enviar via SMS");
-
-        jCheckBox3.setText("Enviar via JMS");
-
         jLabel21.setText("Conta");
 
         cbConta.addActionListener(new java.awt.event.ActionListener() {
@@ -328,16 +308,6 @@ public class Principal extends javax.swing.JFrame {
                 cbConta2ActionPerformed(evt);
             }
         });
-
-        jCheckBox4.setText("Baixa automática de investimento");
-        jCheckBox4.setToolTipText("");
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox5.setText("Análise de Fluxo de Caixa");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -375,21 +345,8 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(cbConta, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(150, 150, 150)
-                        .addComponent(btTransferir))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jCheckBox4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox5))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jCheckBox1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox3)))))
-                .addContainerGap(82, Short.MAX_VALUE))
+                        .addComponent(btTransferir)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,15 +377,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(cbConta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btTransferir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox5)))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Operação", jPanel3);
@@ -437,14 +386,17 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(13, 13, 13)
                 .addComponent(jTabbedPane1)
-                .addGap(22, 22, 22))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -490,7 +442,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btCadastrarContaActionPerformed
 
     private void cbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbClienteActionPerformed
-        // TODO add your handling code here:
+      Cliente cli = (Cliente)cbCliente.getSelectedItem();
+        if(cli.getClass() == ClientePessoaFisica.class){
+            ckJms.setEnabled(false);
+            ckJms.setSelected(false);
+        }else{
+            ckJms.setEnabled(true);
+            
+        }
     }//GEN-LAST:event_cbClienteActionPerformed
 
     private void cbTipoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoClienteActionPerformed
@@ -532,9 +491,9 @@ public class Principal extends javax.swing.JFrame {
         limparCampos();
     }//GEN-LAST:event_btCadastrarClienteActionPerformed
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+    private void ckBaixaAutomaticaInvestimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckBaixaAutomaticaInvestimentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    }//GEN-LAST:event_ckBaixaAutomaticaInvestimentoActionPerformed
 
     
     /**
@@ -582,11 +541,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<ContaCorrente> cbConta;
     private javax.swing.JComboBox<ContaCorrente> cbConta2;
     private javax.swing.JComboBox<String> cbTipoCliente;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox ckAnaliseFluxoCaixa;
+    private javax.swing.JCheckBox ckBaixaAutomaticaInvestimento;
+    private javax.swing.JCheckBox ckJms;
+    private javax.swing.JCheckBox ckSms;
+    private javax.swing.JCheckBox ckWhatsapp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -637,22 +596,22 @@ public class Principal extends javax.swing.JFrame {
     
     private void notifica(){
          Notificacao n = new Notificacao();
-        if (jCheckBox1.isSelected()) {
+        if (ckWhatsapp.isSelected()) {
             n.setWhatsApp(true); 
         }
-        if (jCheckBox2.isSelected()) {
+        if (ckSms.isSelected()) {
             n.setSMS(true);
         }
-        if (jCheckBox3.isSelected()) {
+        if (ckJms.isSelected()) {
             n.setJMS(true);
         }
         n.defineNotificacao();
         JOptionPane.showMessageDialog(this, n.toString(contaAtual));
-        if (jCheckBox4.isSelected()) {
+        if (ckBaixaAutomaticaInvestimento.isSelected()) {
             BaixaAutomaticaInvestimento b = new BaixaAutomaticaInvestimento();
             JOptionPane.showMessageDialog(this, b.toString(contaAtual));
         }
-        if (jCheckBox5.isSelected()) {
+        if (ckAnaliseFluxoCaixa.isSelected()) {
             AnaliseFluxoCaixa a = new AnaliseFluxoCaixa();
             JOptionPane.showMessageDialog(this, a.toString(contaAtual));
         }
