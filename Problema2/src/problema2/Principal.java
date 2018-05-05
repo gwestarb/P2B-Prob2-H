@@ -5,20 +5,23 @@
  */
 package problema2;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author bruno
  */
-public class Principal extends javax.swing.JFrame {
+public class Principal extends javax.swing.JFrame implements Subject{
     ContaCorrente contaAtual;
+    private ArrayList<Observer> observers = new ArrayList();
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
-       
+      
     }
 
     /**
@@ -415,27 +418,44 @@ public class Principal extends javax.swing.JFrame {
 
         contaAtual.transferir(Double.parseDouble(txtQtdTransferir.getText()), conta2);
         limparCampos();
-
+        notifyObservers();
+        observers.clear();
     }//GEN-LAST:event_btTransferirActionPerformed
 
     private void btDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDepositarActionPerformed
         contaAtual.depositar(Double.parseDouble(txtQtdDepositar.getText()));
         limparCampos();
-        notifica();
+        notifyObservers();
+        observers.clear();
     }//GEN-LAST:event_btDepositarActionPerformed
 
     private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
         contaAtual.sacar(Double.parseDouble(txtQtdSaque.getText()));
         limparCampos();
-        notifica();
+        notifyObservers();
+        observers.clear();
     }//GEN-LAST:event_btSacarActionPerformed
 
     private void btCadastrarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarContaActionPerformed
         ContaCorrente conta = new ContaCorrente(Integer.parseInt(txtNumero.getText()), Integer.parseInt(txtAgencia.getText()));
         Cliente cli = (Cliente)cbCliente.getSelectedItem();
         conta.setCliente(cli);
+        if (ckWhatsapp.isSelected()) {
+            conta.setWhatsapp(true); 
+        }
+        if (ckSms.isSelected()) {
+            conta.setSms(true);
+        }
+        if (ckJms.isSelected()) {
+            conta.setJms(true);
+        }
+        if (ckAnaliseFluxoCaixa.isSelected()){
+            conta.setFluxocaixa(true);
+        }
+        if (ckBaixaAutomaticaInvestimento.isSelected()) {
+            conta.setBaixainvestimento(true);
+        }
         cli.addConta(conta);
-
         cbConta.addItem(conta);
         cbConta2.addItem(conta);
         limparCampos();
@@ -594,26 +614,35 @@ public class Principal extends javax.swing.JFrame {
         
     }
     
-    private void notifica(){
-         Notificacao n = new Notificacao();
-        if (ckWhatsapp.isSelected()) {
-            n.setWhatsApp(true); 
-        }
-        if (ckSms.isSelected()) {
-            n.setSMS(true);
-        }
-        if (ckJms.isSelected()) {
-            n.setJMS(true);
-        }
-        n.defineNotificacao();
-        JOptionPane.showMessageDialog(this, n.toString(contaAtual));
-        if (ckBaixaAutomaticaInvestimento.isSelected()) {
-            BaixaAutomaticaInvestimento b = new BaixaAutomaticaInvestimento();
-            JOptionPane.showMessageDialog(this, b.toString(contaAtual));
-        }
-        if (ckAnaliseFluxoCaixa.isSelected()) {
-            AnaliseFluxoCaixa a = new AnaliseFluxoCaixa();
-            JOptionPane.showMessageDialog(this, a.toString(contaAtual));
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add( observer );
+    }
+    
+    @Override
+    public void removeObserver(Observer observer) {
+        int index = observers.indexOf( observer );
+        if( index > -1 ){
+            observers.remove( observer );
         }
     }
+    
+    
+    @Override
+    public void notifyObservers() { /* MÉTODO ONDE HÁ A COMUNICAÇÃO DA MUDANÇA DE ESTADO */
+        if (contaAtual.isFluxocaixa()) {
+            AnaliseFluxoCaixa analise = new AnaliseFluxoCaixa(this);
+        }
+        if (contaAtual.isBaixainvestimento()) {
+            BaixaAutomaticaInvestimento baixa = new BaixaAutomaticaInvestimento(this);
+        }
+        Notificacao notifica = new Notificacao(this);
+        synchronized (observers){
+           for (Observer ob : observers){
+            ob.update(contaAtual);
+        } 
+        }
+        
+        
+    }  
 }

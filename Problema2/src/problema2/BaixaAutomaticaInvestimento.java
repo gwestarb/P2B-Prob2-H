@@ -5,15 +5,31 @@
  */
 package problema2;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bruno
  */
-public class BaixaAutomaticaInvestimento {
+public class BaixaAutomaticaInvestimento implements Observer{
+    private Subject subject;
+    
+    public BaixaAutomaticaInvestimento(Subject subject){
+       this.subject = subject;
+       this.subject.addObserver(this);
+    }
+    
+     @Override
+    public void update(ContaCorrente cc) {
+        toString(cc);
+        JOptionPane.showMessageDialog(null, toString(cc));
+    }
     
     public String toString(ContaCorrente cc){
         
         return "Cliente " +cc.getCliente() + ", Conta" +cc.getChave()+" - Baixa automática de investimento";
     }
+
+   
     
 }

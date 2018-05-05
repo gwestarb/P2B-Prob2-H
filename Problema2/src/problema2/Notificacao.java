@@ -5,60 +5,50 @@
  */
 package problema2;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bruno
  */
-public class Notificacao {
-
-    public boolean isWhatsApp() {
-        return WhatsApp;
+public class Notificacao implements Observer{
+private Subject subject;
+String str = "";
+    
+    public Notificacao(Subject subject){
+       this.subject = subject;
+       this.subject.addObserver(this);
+       
     }
+ 
+    @Override
+    public void update(ContaCorrente cc) {
+        defineNotificacao(cc);
+        toString(cc);
+        JOptionPane.showMessageDialog(null, toString(cc));
 
-    public void setWhatsApp(boolean WhatsApp) {
-        this.WhatsApp = WhatsApp;
-    }
-
-    public boolean isSMS() {
-        return SMS;
-    }
-
-    public void setSMS(boolean SMS) {
-        this.SMS = SMS;
-    }
-
-    public boolean isJMS() {
-        return JMS;
-    }
-
-    public void setJMS(boolean JMS) {
-        this.JMS = JMS;
     }
     
-    private boolean WhatsApp;
-    private boolean SMS;
-    private boolean JMS;
-    String str = "";
-    
-    public void defineNotificacao() {
-        if (WhatsApp || SMS || JMS) {
+    public void defineNotificacao(ContaCorrente cc) {
+        if (cc.isWhatsapp() || cc.isSms() || cc.isJms()) {
             str = ", Notificação enviada por";
         }
-        if (WhatsApp) {
+        if (cc.isWhatsapp()) {
             str = str + " - Whatsapp";
         }
-        if (SMS) {
+        if (cc.isSms()) {
             str = str + " - SMS";
         }
-        if (JMS) {
+        if (cc.isJms()) {
             str = str + " - JMS";
         }
 }
 
     public String toString(ContaCorrente cc){
-        
         return "Cliente " +cc.getCliente() + ", Conta" +cc.getChave()+str;
     }
+
+    
     
 
 }

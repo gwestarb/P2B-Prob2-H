@@ -19,6 +19,11 @@ public class ContaCorrente {
     private Cliente cliente;
     private double saldo = 0;
     private List<Operacao> operacoes = new ArrayList();
+    private boolean whatsapp;
+    private boolean sms;
+    private boolean fluxocaixa;
+    private boolean baixainvestimento;
+    private boolean jms;
 
     public ContaCorrente(int numero, int agencia) {
         this.setNumero(numero);
@@ -95,5 +100,45 @@ public class ContaCorrente {
     
     public List<Operacao> getOperacoes() {
         return operacoes;
+    }
+    
+     public boolean isWhatsapp() {
+        return whatsapp;
+    }
+
+    public void setWhatsapp(boolean whatsapp) {
+        this.whatsapp = whatsapp;
+    }
+
+    public boolean isSms() {
+        return sms;
+    }
+
+    public void setSms(boolean sms) {
+        this.sms = sms;
+    }
+
+    public boolean isFluxocaixa() {
+        return fluxocaixa;
+    }
+
+    public void setFluxocaixa(boolean fluxocaixa) {
+        this.fluxocaixa = fluxocaixa;
+    }
+
+    public boolean isBaixainvestimento() {
+        return baixainvestimento;
+    }
+
+    public void setBaixainvestimento(boolean baixainvestimento) {
+        this.baixainvestimento = baixainvestimento;
+    }
+
+    public boolean isJms() {
+        return jms;
+    }
+
+    public void setJms(boolean jms) {
+        this.jms = jms;
     }
 }
