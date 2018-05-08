@@ -1,0 +1,5 @@
+Observer:
+  Nossa classe que seria nosso observer é a classe "Observer.java".
+  
+Subject:
+  Nossa classe que representa o subject é a classe "Subject.java".
