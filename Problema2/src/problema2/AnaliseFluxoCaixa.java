@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author bruno
+ * @author bruno, gustavo w, leonardo rovigo e Felipe
  */
 public class AnaliseFluxoCaixa implements Observer{
     private Subject subject;

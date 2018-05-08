@@ -7,7 +7,7 @@ package problema2;
 
 /**
  *
- * @author bruno
+ * @author bruno, gustavo w, leonardo rovigo e Felipe
  */
 public interface Subject {
     public void addObserver(Observer observer);

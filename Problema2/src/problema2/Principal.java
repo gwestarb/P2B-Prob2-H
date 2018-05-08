@@ -416,7 +416,12 @@ public class Principal extends javax.swing.JFrame implements Subject{
     private void btTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTransferirActionPerformed
         ContaCorrente conta2 = (ContaCorrente)cbConta2.getSelectedItem();
 
-        contaAtual.transferir(Double.parseDouble(txtQtdTransferir.getText()), conta2);
+        try {
+            contaAtual.transferir(Double.parseDouble(txtQtdTransferir.getText()), conta2);
+        }catch(IllegalArgumentException e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            return;
+        }
         limparCampos();
         notifyObservers();
         observers.clear();
@@ -430,7 +435,13 @@ public class Principal extends javax.swing.JFrame implements Subject{
     }//GEN-LAST:event_btDepositarActionPerformed
 
     private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
-        contaAtual.sacar(Double.parseDouble(txtQtdSaque.getText()));
+        
+        try{
+            contaAtual.sacar(Double.parseDouble(txtQtdSaque.getText()));
+        }catch(IllegalArgumentException e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            return;
+        }
         limparCampos();
         notifyObservers();
         observers.clear();
@@ -458,6 +469,7 @@ public class Principal extends javax.swing.JFrame implements Subject{
         cli.addConta(conta);
         cbConta.addItem(conta);
         cbConta2.addItem(conta);
+        JOptionPane.showMessageDialog(rootPane, "Conta cadastrada com sucesso!");
         limparCampos();
     }//GEN-LAST:event_btCadastrarContaActionPerformed
 
@@ -640,7 +652,7 @@ public class Principal extends javax.swing.JFrame implements Subject{
         synchronized (observers){
            for (Observer ob : observers){
             ob.update(contaAtual);
-        } 
+            } 
         }
         
         
