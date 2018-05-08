@@ -1,5 +1,8 @@
 Observer:
   Nossa classe que seria nosso observer é a classe "Observer.java".
-  
+  Nossas classes observadoras são:
+    "AnaliseFluxoCaixa", "BaixaAutomaticaInvestimento" e "Notificacao"
+    
 Subject:
   Nossa classe que representa o subject é a classe "Subject.java".
+  A classe que notifica os observadores é a classe "Principal".
