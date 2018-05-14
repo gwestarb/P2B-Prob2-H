@@ -2,7 +2,17 @@ Observer:
   Nossa classe que seria nosso observer é a classe "Observer.java".
   Nossas classes observadoras são:
     "AnaliseFluxoCaixa", "BaixaAutomaticaInvestimento" e "Notificacao"
-    
+--> Prof. Marcel: faltaram os novos serviços (definidos no questionamento).
+
 Subject:
   Nossa classe que representa o subject é a classe "Subject.java".
   A classe que notifica os observadores é a classe "Principal".
+--> Prof. Marcel: mas o sujeito (observável) não é a classe Principal e sim a ContaCorrente. Os serviços (observadores) estão interessados na movimentação da conta.
+--> Prof. Marcel: por não usarem a conta como sujeito, tiveram que criar um conjunto de atributos booleanos em conta para saber quais serviços estavam atrelados a ela:
+    private boolean whatsapp;
+    private boolean sms;
+    private boolean fluxocaixa;
+    private boolean baixainvestimento;
+    private boolean jms;
+Desta maneira fica um alto nível de acoplamento, pois cada novo serviço necessita de um novo atributo e novos métodos para poder ser associado a uma conta.
+--> Prof. Marcel: a classe Principal deveria se preocupar apenas com o interfaceamento com usuário, chamando as operações da ContaCorrente (depositar, sacar, transferir). A conta é que deveria se preocupar em iniciar os serviços a ela associados (notifyObservers).
