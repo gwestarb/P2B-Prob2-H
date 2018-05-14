@@ -16,3 +16,9 @@ Subject:
     private boolean jms;
 Desta maneira fica um alto nível de acoplamento, pois cada novo serviço necessita de um novo atributo e novos métodos para poder ser associado a uma conta.
 --> Prof. Marcel: a classe Principal deveria se preocupar apenas com o interfaceamento com usuário, chamando as operações da ContaCorrente (depositar, sacar, transferir). A conta é que deveria se preocupar em iniciar os serviços a ela associados (notifyObservers).
+
+--> Prof. Marcel: Cada problema recebe uma nota de 0,0 a 3,0.
+A soma dos 3 problemas mais a avaliação sobre a colaboração no trabalho em equipe define a nota de cada aluno.
+Problema - Notas Equipe H
+1	      2,9
+2	      2,2
